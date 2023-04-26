@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+
+/* Styles for the template. */
+
+body.show-nav .sidenav {
+  left: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+/* style the sidenav */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -200px;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: 0.5s;
+}
+
+/* Show nav on desktop */
+@media screen and (min-width: 600px) {
+  .sidenav {
+    left: 0;
+  }
+  .toggle-nav {
+    display: none;
+  }
+}
+
+/* Hide sidebar on mobile */
+@media screen and (max-width: 500px) {
+  .sidenav {
+    left: -200px;
+  }
+  .toggle-nav { 
+    position: absolute;
+    top: 10px;
+    right: -40px;
+  }
+  .fixed {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .sidenav.open {
+    position:absolute;
+    top: 0;
+    left: 200px;
+  }
+
+  .sidehelp {
+    left: -200px;
+  }
+  .toggle-help { 
+    position: absolute;
+    top: 10px;
+    right: -40px;
+  }
+  .fixed {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .sidehelp.open {
+    position:absolute;
+    top: 0;
+    left: 200px;
+  }
+  
+  /* Main content */
+  .main {
+    margin-top: 20px;
+    margin-left: 5px !important;
+    font-size: 20px; 
+    padding: 0px 10px;
+  }
+
+  .mainh1 {
+    margin-top: 40px;
+    margin-left: 5px !important;
+    font-size: 20px; 
+    padding: 0px 10px;
+    padding-top: 20px;
+  }
+}
+
+
+/* Style the sidenav */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On hover mouse */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 70px; 
+  font-size: 20px; 
+  padding: 0px 10px;
+}
+
+.mainh1 {
+  margin-left: 130px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  padding: 30px;
+}
+/* active dropdown */
+.active {
+  background-color: #1c6ee8;
+  color: white;
+}
+
+/* container for the links */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* arrow on dropdowns */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+
+
+
+/*   DARK/LIGHT MODE   */
+/* styles for dark mode */
+body {
+  background-color: #fff;
+  color: #333;
+}
+/* styles a button */
+.button {
+  position: fixed;
+  z-index:9999;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  height:auto;
+}
+
+.newbtn {
+  position: fixed;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  width:30px;
+  height: 30px;
+}
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+
+
+/* HELP section */
+#sidehelp {
+  position: absolute;
+  top: 0;
+  right: -400px; /*  hidden */
+  width: 400px; /* Fixed width */
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  padding: 20px;
+  transition: right 0.3s ease-in-out; /* smooth transition */
+  display: none; /* hidden at first */
+  z-index: 9999;
+}
+/* styles help for dark mode */
+#sidehelp.dark-mode {
+  background-color: #222;
+  color: #fff;
+}
+
+#sidehelp.open {
+  right: 0;
+  display: block; /* Show content*/
+}
+/* position help button */
+.toggle-help { 
+  position: absolute;
+  top: 10px;
+  right: -40px;
+}
+
+.fixed {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* used to show help after js has ran */
+body.show-help #sidehelp {
+  right: 0;
+  position: fixed;
+}
+/* style help button */
+button#toggle-help {
+  position: fixed;
+  top: 10%;
+  right:0;
+  width:50px;
+  height: 50px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+
+/* change styling for help on mobile */
+@media and screen(max-width: 845px) {
+  #help-toggle {
+    display: block;
+  }
+
+
+}
+
+
+/* set doc font size */
+html {
+  font-size: 16px;
+}
+
+.get-help-text {
+  position: fixed;
+  top: 10px;
+  right:5%;
+  width:100px;
+  height: 50px;
+  z-index: 1;
+  padding:10px;
+  font-size: 14px;
+}
+</style>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+
+<title>{% block title %} Amy Davis {% endblock %}</title>
+<!-- Links to stylesheets & boostrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</head>
+
+<div class="main">
+  <body>
+    <!--mobile only - shows the nav bar -->
+    <button id="toggle-nav" class="newbtn">≡</button>
+
+
+    <!-- navigation bar, dropdowns and links used-->
+    <div class="sidenav">
+      <a href="home">Home</a>
+      <a href="about">About</a>
+
+      <!-- DROPDOWN SIDE BAR GLOBAL SECTIONS. -->
+      <button class="dropdown-btn">Global 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="rms">Regional Marketshare</a>
+        <a href="globalgenre">Genre</a>
+        <a href="globalplatform">Platform</a>
+        <a href="globaltopgames">Top games</a>
+      </div> 
+      <!-- DROPDOWN SIDE BAR EUROPEAN SECTION -->
+      <button class="dropdown-btn">Europe 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="EUAllTime">All-time genre sales</a>
+        <a href="eugenre">Genre</a>
+        <a href="euplatform">Platform</a>
+      </div>
+      <!-- JAPAN DROPDOWN -->
+      <button class="dropdown-btn">Japan 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="jpatg">All-time genre sales</a>
+        <a href="jpgenre">Genre</a>
+        <a href="jpplatform">Platform</a>
+      </div>
+      <!-- USA DROPDOWN -->
+      <button class="dropdown-btn">USA 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="usatg">All-time genre sales</a>
+        <a href="usgenre">Genre</a>
+        <a href="usplatform">Platform</a>
+      </div>
+      <!-- OTHER REGIONS DROPDOWN -->
+      <button class="dropdown-btn">Other regions 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="otatg">All-time genre sales</a>
+        <a href="otgenre">Genre</a>
+        <a href="otplatform">Platform</a>
+      </div>
+    </div>
+
+
+    <!-- headers at the top of the page -->
+    <div class="mainh1">
+      <h1>CET 300 Data Visualisation</h1>
+      <h2>Amy Davis, Final year project</h2>
+    </div>
+    <!-- where the page content is displayed -->
+    <div id="content", class="main", name="content">
+
+      <!-- toggle darkmode button, calls the javascript function at the bottom -->
+      <div class="main">
+        <button class="button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <div></div>
+        <!-- opens help sidebar, calls javascript function -->
+
+        <button id="toggle-help" class="button">
+          <i class="bi bi-question-circle">Help</i>
+        </button>
+        <!-- help section content -->
+        <div id="sidehelp">
+
+          <br>
+          For each page and set of graphs there is some interactivity.
+
+          For Pi charts, any information you dont want can be removed, just click the name on the legendof what you want to remove, and click again to bring it back. 
+          <br><br>
+
+          Bar charts allow you to zoom by left clicking and dragging across the area you are interested in, just double click to zoom back out!
+          <br><br>
+
+          Hovering over any section of any graph will show you the ID and value of each segment, all values are in Million Sales.
+          <br><br>
+
+          Want to download the graph? Easy! just click on the little camera icon in the top right to download as a png file.
+          <p>
+          </div>
+
+
+
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+
+
+
+
+
+        <script>
+
+
+//this is for the navigation bar on mobile
+
+          const toggleNav = document.getElementById("toggle-nav");
+          const body = document.body;
+          const sidebar = document.querySelector('.sidenav');
+
+          toggleNav.addEventListener("click", function() {
+            body.classList.toggle("show-nav");
+            sidebar.classList.toggle("open");
+          });
+
+  // Close the sidebar when the user clicks outside of it
+          window.addEventListener('click', function(e) {
+            if (sidebar.contains(e.target) || toggleNav.contains(e.target)) {
+              return;
+            }
+            body.classList.remove('show-nav');
+            sidebar.classList.remove('open');
+          });
+          
+
+  // show or hide help section
+
+          const togglehelp = document.getElementById("toggle-help");
+          const bodyhelp = document.body;
+          const sidehelp = document.querySelector('#sidehelp');
+
+          togglehelp.addEventListener("click", function(e) {
+            bodyhelp.classList.toggle("show-help");
+            if (sidehelp) {
+              sidehelp.classList.toggle("open");
+            }
+            e.stopPropagation(); 
+          });
+
+  // Close the help sidebar when the user clicks outside of it
+          window.addEventListener('click', function(e) {
+    if (bodyhelp.classList.contains('show-help')) { // check if the sidebar is open
+      bodyhelp.classList.remove('show-help');
+      if (sidehelp) {
+        sidehelp.classList.remove('open');
+      }
+    }
+  });
+
+// dropdowns for navbar
+  /* Loop all dropdown buttons to show/hide sections*/
+          var dropdown = document.getElementsByClassName("dropdown-btn");
+          var i;
+
+          for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+              } else {
+                dropdownContent.style.display = "block";
+              }
+            });
+          }
+
+
+          function toggleDarkMode() {
+  // Get the body 
+            const body = document.body;
+
+  // Toggle the dark mode class on body 
+            body.classList.toggle("dark-mode");
+
+  // Toggle the label-text class on all tick labels
+            const tickLabels = document.querySelectorAll('.label-text');
+            tickLabels.forEach(label => label.classList.toggle("label-text-dark-mode"));
+
+  // get help bar
+            const helpSidebar = document.getElementById("sidehelp");
+
+  // turn on darkmode for sidebar
+            helpSidebar.classList.toggle("dark-mode");
+
+  // Update the user's preference in localStorage
+            const darkModeEnabled = localStorage.getItem("darkModeEnabled");
+            if (darkModeEnabled) {
+              localStorage.removeItem("darkModeEnabled");
+            } else {
+              localStorage.setItem("darkModeEnabled", "true");
+            }
+          }
+
+
+// get darkmode preference and use it
+          const darkModeEnabled = localStorage.getItem("darkModeEnabled");
+          if (darkModeEnabled) {
+            document.body.classList.add("dark-mode");
+            document.getElementById("sidehelp").classList.add("dark-mode");
+          }
+
+
+//open the help sidebar and close it 
+
+          var helpSidebar = document.getElementById('help-sidebar');
+
+          document.getElementById('help-button').addEventListener('click', function(e) {
+            helpSidebar.classList.toggle('open');
+            e.stopPropagation();
+          });
+
+        </script>
+
+      </div>
+    </body>
+    </html>
+
+

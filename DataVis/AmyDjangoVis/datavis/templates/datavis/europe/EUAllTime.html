@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<style>
+
+    /* splash screen for loading pages so it feels less slow on low powered machines or low server spec */
+    .splash {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: #fff;
+    }
+
+    .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+</style>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div class="splash">
+    <div class="spinner"></div>
+    <div class="splash-message"><br>We are currently analysing data to give you accurate, up to date information</div>
+</div>
+
+<script>
+    // Hide splash 
+    window.addEventListener('load', function() {
+        document.querySelector('.splash').style.display = 'none';
+    });
+</script>
+<!-- extend base.html so the styles, navbar and javascript all carry over. -->
+{% extends 'datavis/base.html' %}
+
+
+{% block title %}
+EU All Time
+{% endblock %}
+
+
+{% block content %}
+
+<div class="main">
+    <p>This shows the sales for all genres and all games released between 2010 and 2016, showing that action was the most popular genre in Europe throughout this time. Dont forget to use our help section to teach you how to manipulate graphs to fill your needs!</p>
+</p>
+<!--includes the html file with the plot on -->
+{% include 'datavis/europe/EUAllTime_plot.html' %}
+</div>
+{% endblock %}

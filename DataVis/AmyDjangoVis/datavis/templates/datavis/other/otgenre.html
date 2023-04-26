@@ -1,0 +1,84 @@
+<style>
+    /* splash screen for loading pages so it feels less slow on low powered machines or low server spec */
+
+    .splash {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: #fff;
+    }
+
+    .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .plotly > .plotly-background {
+        fill: transparent !important;
+    }
+</style>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div class="splash">
+    <div class="spinner"></div>
+    <div class="splash-message"><br>We are currently analysing data to give you accurate, up to date information</div>
+</div>
+
+<script>
+    // Hide splash
+    window.addEventListener('load', function() {
+        document.querySelector('.splash').style.display = 'none';
+    });
+</script>
+<!-- extend base.html so the styles, navbar and javascript all carry over. -->
+{% extends 'datavis/base.html' %}
+
+
+{% block title %}
+Other Genre
+{% endblock %}
+
+{% block content %}
+
+<div class="main">
+<!--  include the html files with the plots in  -->
+    <p>This is the Other regions Genre page, the graphs are all in order of year, and will show you the best selling genre of each year. Dont forget to use our help section to teach you how to manipulate graphs to fill your needs!</p>
+    <p> 2010
+        {% include 'datavis/other/genre/otg10_plot.html' %}
+    </p>
+    <p>2011
+        {% include 'datavis/other/genre/otg11_plot.html' %}
+    </p>
+    <p>2012
+        {% include 'datavis/other/genre/otg12_plot.html' %}
+    </p>
+    <p>2013
+        {% include 'datavis/other/genre/otg13_plot.html' %}
+    </p>
+    <p>2014
+        {% include 'datavis/other/genre/otg14_plot.html' %}
+    </p>
+    <p>2015
+        {% include 'datavis/other/genre/otg15_plot.html' %}
+    </p>
+    <p>2016
+        {% include 'datavis/other/genre/otg16_plot.html' %}
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+
+ -- EUROPE --
+ -- Genre -
+ The best-selling genre in Europe in 2010 was Action with total sales of 35.75 million, which represents 20.2% of the total sales for all genres in 2010. There were 174 games released in the Action genre.
+ --  Platform - 
+ The best-selling platform in Europe in 2010 was PS3 with total sales of 52.15 million, which represents 29.5% of the total sales for all platforms in 2010. 147 games were released for this platform in 2010.
+ -- ############################################################ --
+ 
+ 
+ --  JAPAN -- 
+ --  Genre - 
+ The best-selling genre in Japan in 2012 was Role-Playing with total sales of 14.39 million, which represents 27.8% of the total sales for all genres in 2012. There were 63 games released in the Role-Playing genre.
+ --  Platform - 
+ The best-selling platform in Japan in 2013 was 3DS with total sales of 23.52 million, which represents 49.4% of the total sales for all platforms in 2013. 67 games were released for this platform in 2013.
+ -- ############################################################ --
+ 
+ 
+ --  USA -- 
+ --  Genre - 
+ The best-selling genre in USA in 2013 was Action with total sales of 53.79 million, which represents 34.8% of the total sales for all genres in 2013. There were 98 games released in the Action genre.
+ --  Platform - 
+ The best-selling platform in USA in 2015 was PS4 with total sales of 40.76 million, which represents 39.6% of the total sales for all platforms in 2015. 98 games were released for this platform in 2015.
+ -- ############################################################ --
+ 
+ 
+ --  OTHER -- 
+ --  Genre - 
+ The best-selling genre in Other regions in 2012 was Action with total sales of 14.36 million, which represents 38.0% of the total sales for all genres in 2012. There were 147 games released in the Action genre.
+ --  Platform - 
+ The best-selling platform in Other regions in 2013 was PS3 with total sales of 19.33 million, which represents 48.5% of the total sales for all platforms in 2013. 93 games were released for this platform in 2013.
+ -- ############################################################ --
+ 
+ 
+ --  GLOBAL --
+ -Genre -
+ The best-selling genre globally in 2016 was Action with total sales of 19.91 million, which represents 28.1% of the total sales for all genres in 2016. There were 119 games released in the Action genre.
+ - Platform -
+ The best-selling platform globally in 2014 was PS4 with total sales of 98.76 million, which represents 29.3% of the total sales for all platforms in 2014. 75 games were released for this platform in 2014.
+ -- ############################################################ --
+ 
+ 

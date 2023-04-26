@@ -1,0 +1,80 @@
+<style>
+    .splash {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: #fff;
+    }
+
+    .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div class="splash">
+    <div class="spinner"></div>
+        <div class="splash-message"><br>We are currently analysing data to give you accurate, up to date information</div>
+</div>
+
+<script>
+    // Hide the splash screen after the page has loaded
+    window.addEventListener('load', function() {
+        document.querySelector('.splash').style.display = 'none';
+    });
+</script>
+<!-- extend base.html so the styles, navbar and javascript all carry over. -->
+{% extends 'datavis/base.html' %}
+
+
+{% block title %}
+Global Game Sales
+{% endblock %}
+
+{% block content %}
+<!--  include the html files with the plots in  -->
+
+<div class="main">
+
+
+<h1> 2010</h1>
+<p>In 2010 the globally top selling game was Kinect Adventures. This plot shows the sales and how well it sold in each region.</p>
+    {% include 'datavis/global/topgames/topg10_plot.html' %}
+
+<h1>2011
+    {% include 'datavis/global/topgames/topg11_plot.html' %}
+</p>
+<h1>2012</h1>
+    {% include 'datavis/global/topgames/topg12_plot.html' %}
+</h1>
+<h1>2013</h1>
+    {% include 'datavis/global/topgames/topg13_plot.html' %}
+</p>
+<h1>2014</h1>
+    {% include 'datavis/global/topgames/topg14_plot.html' %}
+</p>
+<h1>2015</h1>
+    {% include 'datavis/global/topgames/topg15_plot.html' %}
+</p>
+<h1>2016</h1>
+    {% include 'datavis/global/topgames/topg16_plot.html' %}
+</p>
+</div>
+{% endblock %}
